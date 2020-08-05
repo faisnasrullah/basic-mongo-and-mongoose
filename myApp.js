@@ -25,6 +25,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 /** # SCHEMAS and MODELS #
 /*  ====================== */
+const Schema = mongoose.Schema;
 
 /** 2) Create a 'Person' Model */
 
@@ -47,8 +48,13 @@ mongoose.connect(process.env.MONGO_URI, {
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
 // <Your code here >
+var personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [{ type: String, required: true }]
+});
 
-var Person /* = <Your Model> */
+var Person = mongoose.model('Person', personSchema); /* = <Your Model> */
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
